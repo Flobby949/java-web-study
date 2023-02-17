@@ -8,6 +8,11 @@
     <artifactId>java-web-learning</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <modules>
+        <module>servlet-learning</module>
+        <module>request-learning</module>
+        <module>response-learning</module>
+    </modules>
 
     <packaging>pom</packaging>
 

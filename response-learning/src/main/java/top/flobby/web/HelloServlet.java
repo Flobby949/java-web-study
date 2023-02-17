@@ -1,4 +1,4 @@
-package top.flobby.responselearning;
+package top.flobby.web;
 
 import java.io.*;
 
