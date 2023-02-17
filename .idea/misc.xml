@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/request-learning" />
     <file type="web" url="file://$PROJECT_DIR$/servlet-learning" />
   </component>
   <component name="GOROOT" url="file://$PROJECT_DIR$/../../Go" />
@@ -10,6 +11,7 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/servlet-learning/pom.xml" />
+        <option value="$PROJECT_DIR$/request-learning/pom.xml" />
       </list>
     </option>
   </component>
