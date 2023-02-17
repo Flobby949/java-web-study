@@ -10,12 +10,12 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>servlet-learning</artifactId>
-    <name>servlet-learning</name>
+    <artifactId>request-learning</artifactId>
+    <name>request-learning</name>
     <packaging>war</packaging>
 
     <build>
-        <finalName>servlet</finalName>
+        <finalName>request</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
