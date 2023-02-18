@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import top.flobby.web.util.DownloadUtil;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -34,11 +35,11 @@ public class DownloadServlet extends HttpServlet {
         System.out.println(realPath);
         // 获取下载文件 mime
         String mimeType = servletContext.getMimeType(filename);
+        // 处理中文名
+        // filename = DownloadUtil.getFileName(request.getHeader("user-agaent"), filename);
         // 设置响应头
         response.setContentType(mimeType);
         response.setHeader("content-disposition", "attachment;filename=" + filename);
-        // 预览文件
-        // response.sendRedirect(realPath);
         // 下载文件
         ServletOutputStream sos = response.getOutputStream();
         byte[] buff = new byte[1024 * 4];
@@ -47,5 +48,6 @@ public class DownloadServlet extends HttpServlet {
             sos.write(buff, 0, len);
         }
         fis.close();
+        sos.close();
     }
 }
