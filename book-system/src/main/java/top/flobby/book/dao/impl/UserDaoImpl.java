@@ -30,7 +30,11 @@ public class UserDaoImpl implements UserDAO {
 
     @Override
     public User findUser(User userDto) {
-        String sql = "SELECT * FROM t_user WHERE account = ? AND password = ?";
-        return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), userDto.getAccount(), userDto.getPassword());
+        String sql = "SELECT * FROM t_user WHERE account = ? AND password = ? ";
+        try {
+            return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), userDto.getAccount(), userDto.getPassword());
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

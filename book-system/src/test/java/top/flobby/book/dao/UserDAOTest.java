@@ -28,7 +28,7 @@ class UserDAOTest {
     void findUser() {
         User user = User.builder()
                 .account("new@qq.com")
-                .password("123")
+                .password("111")
                 .build();
         System.out.println(userDAO.findUser(user));
     }

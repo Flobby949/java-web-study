@@ -1,5 +1,8 @@
 package top.flobby.book.service;
 
+import top.flobby.book.model.dto.LoginDTO;
+import top.flobby.book.model.entity.User;
+
 /**
  * @author : JinChenXing
  * @program : java-web-learning
@@ -8,4 +11,11 @@ package top.flobby.book.service;
  **/
 
 public interface UserService {
+
+    /**
+     * 登录
+     * @param loginDTO dto
+     * @return user
+     */
+    User userLogin(LoginDTO loginDTO);
 }
