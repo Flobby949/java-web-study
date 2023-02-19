@@ -11,14 +11,12 @@
         }
 
         body {
-            overflow: hidden
+            background-image: url("img/bg.jpg");
+            background-attachment: fixed;
+            overflow-y: scroll;
         }
 
         .container {
-            overflow-y: scroll;
-            height: 100vh;
-            width: 100vw;
-            background-image: url("img/bg.jpg");
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -37,12 +35,16 @@
             box-shadow: 10px 10px 50px #4e1a5b,
             -10px -10px 50px #ae3acb;
             color: #ffffff;
-            animation:showDiv 2s 1;
+            animation: showDiv 2s 1;
         }
 
         @keyframes showDiv {
-            0%{opacity: 0;}
-            100%{opacity: 1;}
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
         }
 
         .left {
@@ -77,16 +79,32 @@
 </head>
 <body>
 <div class="container" id="container">
-<!--    <div class="card">-->
-<!--        <div class="left">-->
-<!--            <img src="https://cdn2.thecatapi.com/images/zK-7AFYVn.jpg" alt="" class="img">-->
-<!--        </div>-->
-<!--        <div class="right">-->
-<!--            <div class="content"></div>-->
-<!--            <div class="operation"></div>-->
-<!--        </div>-->
-<!--    </div>-->
+    <!--    <div class="card">-->
+    <!--        <div class="left">-->
+    <!--            <img src="" alt="" class="img">-->
+    <!--        </div>-->
+    <!--        <div class="right">-->
+    <!--            <div class="content"></div>-->
+    <!--            <div class="operation"></div>-->
+    <!--        </div>-->
+    <!--    </div>-->
 </div>
+
+<button id="top" onclick="toTop()"
+        style="font-size: 36px;
+        border-radius: 50%;
+        background-color: #edd264;
+        width: 50px;height: 50px;
+        border: none;
+        color: #fff;
+        position:fixed;
+        right: 20px;
+        bottom: 120px;
+        box-shadow: 1px 1px 5px #333;
+        visibility: hidden;
+">
+    ↑
+</button>
 
 <button onclick="getSaying()"
         style="font-size: 36px;
@@ -105,6 +123,16 @@
 
 
 <script>
+    let container = document.getElementById("container");
+    let topBtn = document.getElementById("top");
+
+    document.onscroll = () => {
+        if (document.documentElement.scrollTop > 100) {
+            topBtn.style.visibility = "visible";
+        } else {
+            topBtn.style.visibility = "hidden";
+        }
+    }
 
     function parseDOM(str) {
         const obj = document.createElement("div")
@@ -125,7 +153,6 @@
                         </div>
                     </div>`
         let card = parseDOM(str)[0]
-        let container = document.getElementById("container");
         container.insertBefore(card, container.firstChild)
 
         let delList = document.getElementsByClassName("del");
@@ -149,6 +176,11 @@
             alert(reason)
         })
     }
+
+    function toTop() {
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+    }
+
 </script>
 </body>
 </html>
