@@ -63,6 +63,10 @@
       border-bottom: 1px solid #ddd;
     }
 
+    .register:hover {
+      color: #2f7e8a;
+    }
+
     .active {
       color: rgb(36, 169, 190);
       border-bottom: 2px solid rgb(36, 169, 190);
@@ -159,16 +163,16 @@
   <form action="/login" method="post" class="login-box">
     <div class="sign-box">
       <h3 class="active">密码登录</h3>
-      <h3 class="default">短信登录/注册</h3>
+      <h3 class="default"><a href="register" class="register">注册</a></h3>
     </div>
     <div>
       <label>
-        <input type="text" name="account" class="input-box" placeholder="手机号/邮箱" value="flobby@qq.com">
+        <input type="text" name="account" class="input-box" placeholder="手机号/邮箱">
       </label>
     </div>
     <div>
       <label>
-        <input type="password" name="password" class="input-box" placeholder="密码" value="111">
+        <input type="password" name="password" class="input-box" placeholder="密码">
       </label>
     </div>
     <div>

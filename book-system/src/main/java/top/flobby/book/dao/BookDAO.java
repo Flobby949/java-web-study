@@ -18,4 +18,11 @@ public interface BookDAO {
      * @return list
      */
     List<Book> findAll();
+
+    /**
+     * 根据id获取书本
+     * @param id id
+     * @return book
+     */
+    Book getById(Integer id);
 }

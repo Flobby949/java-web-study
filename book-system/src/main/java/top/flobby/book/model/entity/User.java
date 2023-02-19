@@ -25,5 +25,6 @@ public class User {
     private String nickname;
     private String avatar;
     private String address;
+
     private LocalDateTime createTime;
 }

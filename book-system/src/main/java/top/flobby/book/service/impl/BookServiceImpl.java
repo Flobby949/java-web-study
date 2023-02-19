@@ -22,4 +22,9 @@ public class BookServiceImpl implements BookService {
     public List<Book> getAll() {
         return bookDAO.findAll();
     }
+
+    @Override
+    public Book getById(Integer id) {
+        return bookDAO.getById(id);
+    }
 }

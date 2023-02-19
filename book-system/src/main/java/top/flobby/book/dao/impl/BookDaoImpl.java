@@ -24,4 +24,10 @@ public class BookDaoImpl implements BookDAO {
         String sql = "SELECT * FROM t_book ";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Book.class));
     }
+
+    @Override
+    public Book getById(Integer id) {
+        String sql = "SELECT * FROM t_book WHERE id = ?";
+        return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Book.class), id);
+    }
 }

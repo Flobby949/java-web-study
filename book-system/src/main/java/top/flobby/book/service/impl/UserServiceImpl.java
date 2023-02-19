@@ -26,4 +26,21 @@ public class UserServiceImpl implements UserService {
                 .build();
         return userDAO.findUser(user);
     }
+
+    @Override
+    public Integer register(String account, String password) {
+        User user = User.builder()
+                .account(account)
+                .password(Md5Util.encode(password, "utf-8"))
+                .build();
+        return userDAO.addUser(user);
+    }
+
+    @Override
+    public User validAccount(String account) {
+        return userDAO.validUser(User.builder()
+                .account(account)
+                .build());
+    }
+
 }

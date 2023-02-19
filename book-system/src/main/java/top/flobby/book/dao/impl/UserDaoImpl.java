@@ -37,4 +37,14 @@ public class UserDaoImpl implements UserDAO {
             return null;
         }
     }
+
+    @Override
+    public User validUser(User user) {
+        String sql = "SELECT * FROM t_user WHERE account = ? ";
+        try {
+            return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), user.getAccount());
+        } catch (Exception e) {
+            return null;
+        }
+    }
 }

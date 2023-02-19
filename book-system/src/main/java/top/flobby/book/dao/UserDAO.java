@@ -32,5 +32,10 @@ public interface UserDAO {
      */
     User findUser(User userDto);
 
-
+    /**
+     * 验证user
+     * @param user user
+     * @return user
+     */
+    User validUser(User user);
 }

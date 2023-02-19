@@ -17,4 +17,11 @@ public interface BookService {
      * @return bookList
      */
     List<Book> getAll();
+
+    /**
+     * 获取书本详情
+     * @param id id
+     * @return book
+     */
+    Book getById(Integer id);
 }

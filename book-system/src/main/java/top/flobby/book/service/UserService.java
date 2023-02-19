@@ -18,4 +18,19 @@ public interface UserService {
      * @return user
      */
     User userLogin(LoginDTO loginDTO);
+
+    /**
+     * 注册
+     * @param account account
+     * @param password password
+     * @return code
+     */
+    Integer register(String account, String password);
+
+    /**
+     * 校验用户名唯一性
+     * @param account account
+     * @return user
+     */
+    User validAccount(String account);
 }

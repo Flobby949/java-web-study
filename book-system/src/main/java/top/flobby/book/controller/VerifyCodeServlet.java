@@ -25,8 +25,8 @@ public class VerifyCodeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         StringBuilder code = new StringBuilder();
-        int width = 120;
-        int height = 50;
+        int width = 110;
+        int height = 40;
         // 创建一个在内存中存放验证码图片的对象
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         // 绘制图片
@@ -45,12 +45,12 @@ public class VerifyCodeServlet extends HttpServlet {
             int index = random.nextInt(str.length());
             char ch = str.charAt(index);
             code.append(ch);
-            g.setFont(new Font("宋体", Font.BOLD, 50));
-            g.drawString(String.valueOf(ch), width / 5 * i, height - 20);
+            g.setFont(new Font("宋体", Font.BOLD, 40));
+            g.drawString(String.valueOf(ch), width / 5 * i, height - 5);
         }
         System.out.println("Code: " + code);
         HttpSession session = req.getSession();
-        session.setAttribute("code", code);
+        session.setAttribute("code", code.toString());
         // 绘制干扰线
         g.setColor(Color.BLUE);
         for (int i = 0; i < 20; i++) {
@@ -58,7 +58,7 @@ public class VerifyCodeServlet extends HttpServlet {
             int y1 = random.nextInt(height - 1);
             int x2 = random.nextInt(6) + 1;
             int y2 = random.nextInt(12) + 1;
-            g.drawLine(x1, y1, x1 + x2 + 20, y1 + y2 + 20);
+            g.drawLine(x1, y1, x1 + x2 + 10, y1 + y2 + 20);
         }
 
         for (int i = 0; i < width; i++) {
