@@ -1,10 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>channel</title>
 </head>
 <body>
-$END$
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<label for="lv1">
+    <select id="lv1" style="width: 200px; height: 40px">
+        <option value="-1" selected="selected">请选择</option>
+    </select>
+</label>
+
+<label for="lv2">
+    <select id="lv2" style="width: 200px; height: 40px"></select>
+</label>
+
+<script>
+    // 一级菜单
+    let lv1 = document.getElementById("lv1");
+    axios.get("channel", {params: {"level": 1}}).then((res) => {
+        let data = res.data;
+        for (let i = 0; i < data.length; i++) {
+            const channel = data[i]
+            lv1.options.add(new Option(channel.name, channel.code))
+        }
+    })
+    // 二级菜单
+    let lv2 = document.getElementById("lv2");
+    // 对于一级菜单的内容绑定
+    lv1.onchange = function () {
+        console.log(lv2.options.length)
+        if (lv2.options.length > 0) {
+            lv2.options.length = 0
+        }
+        axios.get("channel", {params: {"level": 2, "parent": lv1.value}}).then((res) => {
+            let data = res.data;
+            for (let i = 0; i < data.length; i++) {
+                const channel = data[i]
+                lv2.options.add(new Option(channel.name, channel.code))
+            }
+        })
+    }
+</script>
 </body>
 </html>
