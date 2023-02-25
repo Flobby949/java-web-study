@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>brand</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<div>
+    <a href="addBrand.html">新增品牌</a>
+    <hr>
+    <table id="brandTable"></table>
+</div>
+<script>
+    window.onload = function () {
+        axios({
+            method: "get",
+            url: "http://localhost:9090/selectAllBrand"
+        }).then(function (resp) {
+            // 获取数据
+            let brands = resp.data;
+            // 拼接表头行
+            let tableData =
+                `<tr>
+                    <th>序号</th>
+                    <th>品牌名称</th>
+                    <th>企业名称</th>
+                    <th>排序</th>
+                    <th>品牌介绍</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                 </tr>`;
+            // 遍历数据，拿到对象，拼接表头
+            for (let i = 0; i < brands.length; i++) {
+                let brand = brands[i];
+                tableData +=
+                    `<tr>
+                        <td>${brand.id}</td>
+                        <td>${brand.brandName}</td>
+                        <td>${brand.companyName}</td>
+                        <td>${brand.ordered}</td>
+                        <td>${brand.description}</td>
+                        <td>${brand.status}</td>
+                        <td>
+                          <a href="#">修改</a>
+                          <a href="#">删除</a>
+                        </td>
+                      </tr>`;
+            }
+            // 设置表格数据
+            document.getElementById("brandTable").innerHTML = tableData;
+        });
+    }
+</script>
+</body>
+</html>
