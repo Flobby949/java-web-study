@@ -1,10 +1,12 @@
 package top.flobby.web.servlet;
 
+import com.alibaba.fastjson2.JSON;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import top.flobby.web.entity.User;
 
 import java.io.IOException;
 
@@ -21,10 +23,9 @@ public class ValidServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        if (username.equals("aaa") && password.equals("111")) {
-            request.getRequestDispatcher("/success.html").forward(request,resp);
-        } else {
-            resp.sendRedirect("/fail.html");
-        }
+        User user = new User(username, password);
+        resp.setContentType("application/json;charset=utf-8");
+        resp.getWriter().write(JSON.toJSONString(user));
+        resp.getWriter().close();
     }
 }
