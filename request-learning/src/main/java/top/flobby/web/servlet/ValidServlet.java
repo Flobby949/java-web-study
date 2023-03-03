@@ -28,4 +28,9 @@ public class ValidServlet extends HttpServlet {
         resp.getWriter().write(JSON.toJSONString(user));
         resp.getWriter().close();
     }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        this.doPost(req, resp);
+    }
 }

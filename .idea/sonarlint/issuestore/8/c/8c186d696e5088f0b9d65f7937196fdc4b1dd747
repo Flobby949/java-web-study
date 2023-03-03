@@ -1,0 +1,6 @@
+
+a
+java:S1854 "?Remove this useless assignment to local variable "inputStream".(Ñ™ÉŽúÿÿÿÿ8Ñ¿×¸è0
+R
+java:S1481 "0Remove this unused "inputStream" local variable.(Ñ™ÉŽúÿÿÿÿ8Ö¿×¸è0
+c	java:S899,"BDo something with the "boolean" value returned by "createNewFile".(ÖàÖ¸ûÿÿÿÿ8Ý¿×¸è0
