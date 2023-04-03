@@ -25,6 +25,7 @@ public class DemoServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getSession().invalidate();
         resp.setContentType("text/html;charset=utf-8");
         resp.getWriter().write("""
                     <!DOCTYPE html>

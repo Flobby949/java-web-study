@@ -7,7 +7,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.util.List;
 
 /**
  * @author : Flobby
@@ -16,31 +15,32 @@ import java.util.List;
  * @create : 2023-03-04 15:21
  **/
 
-@WebFilter("/demo")
-public class DemoFilter extends HttpFilter {
-
-    @Override
-    public void init(FilterConfig config) throws ServletException {
-        super.init(config);
-    }
+@WebFilter("/*")
+public class DemoFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
+
+        // String[] urls = {"login", "index", "/css/"};
+        String[] urls = {"login", "index"};
+        String url = request.getRequestURL().toString();
+        for (String u : urls) {
+            if (url.contains(u)) {
+                System.out.println("pass:" + url);
+                chain.doFilter(servletRequest, response);
+            }
+        }
+
         HttpSession session = request.getSession();
 
         String token = (String) session.getAttribute("token");
         System.out.println(token);
         if (token == null) {
             request.getRequestDispatcher("/login.html").forward(request, response);
+        } else {
+            chain.doFilter(servletRequest, response);
         }
-
-        chain.doFilter(request, response);
     }
 
-
-    @Override
-    public void destroy() {
-        super.destroy();
-    }
 }

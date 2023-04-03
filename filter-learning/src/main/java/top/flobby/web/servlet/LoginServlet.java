@@ -27,6 +27,6 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         session.setAttribute("token", "token");
-        resp.sendRedirect("index.html");
+        req.getRequestDispatcher("index.html").forward(req, resp);
     }
 }
